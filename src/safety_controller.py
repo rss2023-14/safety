@@ -18,7 +18,7 @@ class SafetyController:
     """
     LOOK_AHEAD_TIME = rospy.get_param("look_ahead_time", 0.5) # seconds
     HALF_CAR_WIDTH = rospy.get_param("half_car_width", 0.2) # meters
-    IGNORE_CLOSE_DIST = 0.1 # meters
+    IGNORE_CLOSE_DIST = rospy.get_param("ignore_close_distance", 0.1) # meters
 
     def __init__(self):
         self.lidar_sub = message_filters.Subscriber("/scan", LaserScan)
@@ -90,6 +90,6 @@ class SafetyController:
 
 if __name__ == "__main__":
     rospy.init_node('safety_controller')
-    rospy.Rate(20)  # 20hz
+    rospy.Rate(rospy.get_param("publish_rate", 20)) # Hz
     safety_controller = SafetyController()
     rospy.spin()

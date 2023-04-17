@@ -1,2 +1,5 @@
-look_ahead_time: 0.5 # s
-half_car_width: 0.2 # m
+rate: 20 # Hz
+
+look_ahead_time: 0.5 # seconds
+half_car_width: 0.2 # meters
+ignore_close_distance: 0.1 # meters
