@@ -10,14 +10,13 @@ from ackermann_msgs.msg import AckermannDriveStamped
 from visualization_tools import *
 import math
 
-
 def safety_control(ackermann, lidar_data, pub):
     if lidar_data.angle_increment == 0.0:
         return  # Early return for uninitialized LaserScan
 
     # how far in seconds do we want to check
-    look_ahead_time = rospy.get_param("safety_controller/look_ahead_time")
-    half_car_width = rospy.get_param("safety_controller/half_car_width")
+    look_ahead_time = rospy.get_param("look_ahead_time")
+    half_car_width = rospy.get_param("half_car_width")
 
     # we only want from -90 deg to 90 deg
     low_index = int(

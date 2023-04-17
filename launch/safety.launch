@@ -1,0 +1,5 @@
+<launch>
+  <!-- Launch only the safety controller with given parameters -->
+  <node name="safety_controller" pkg="safety" type="safety_controller.py"/>
+  <rosparam command="load" file="$(find safety)/params.yaml"/>
+</launch>
